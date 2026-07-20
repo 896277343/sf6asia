@@ -6,6 +6,7 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
+    "bt:start": "node server.js",
     "lint": "next lint",
     "test": "vitest run",
     "test:watch": "vitest"
