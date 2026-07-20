@@ -4,18 +4,37 @@ const wordpressHostname = process.env.WORDPRESS_HOSTNAME;
 const wordpressUrl = process.env.WORDPRESS_URL;
 
 const nextConfig: NextConfig = {
-  output: "standalone",
   images: {
-    remotePatterns: wordpressHostname
-      ? [
-          {
-            protocol: "https",
-            hostname: wordpressHostname,
-            port: "",
-            pathname: "/**",
-          },
-        ]
-      : [],
+    remotePatterns: [
+      ...(wordpressHostname
+        ? [
+            {
+              protocol: "https" as const,
+              hostname: wordpressHostname,
+              port: "",
+              pathname: "/**",
+            },
+          ]
+        : []),
+      {
+        protocol: "https",
+        hostname: "www.sf6relations.com",
+        port: "",
+        pathname: "/wp-content/uploads/**",
+      },
+      {
+        protocol: "https",
+        hostname: "www.sf6relations.com",
+        port: "",
+        pathname: "/wp-content/**",
+      },
+      {
+        protocol: "https",
+        hostname: "h2gassolution.com",
+        port: "",
+        pathname: "/products/**",
+      },
+    ],
   },
   async redirects() {
     if (!wordpressUrl) {

@@ -40,3 +40,15 @@ next-env.d.ts
 .claude
 .factory
 RAILWAY-SETUP.md
+
+# local runtime logs
+*.log
+
+# local source/reference material
+/info/
+/exports/
+/wangmarket/
+
+# local launch helpers used by Codex
+/tools/start-next-detached.js
+/tools/run-next-3008.js
