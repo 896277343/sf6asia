@@ -11,50 +11,51 @@ import { products } from "@/lib/catalogue-data";
 
 const productAreas = [
   {
-    title: "SF6 Gas Handling",
+    title: "SF6 gas",
     href: "/productcatalogue/finder?productrange=SF6%20gas",
-    image: "https://www.sf6relations.com/wp-content/uploads/2022/09/SF6-Handling-Unit.jpg",
+    image: "/pic/sf6-service-carts.webp",
   },
   {
-    title: "Hydrogen Equipment",
-    href: "/productcatalogue/finder?productrange=Hydrogen",
-    image:
-      "https://www.sf6relations.com/wp-content/uploads/2024/03/h2-sensor-instrumentation-and-Equipment-1024x589.webp",
+    title: "Alternative arc quenching and insulating gases",
+    href: "/productcatalogue/finder?productrange=Alternative%20arc%20quenching%20and%20insulating%20gases",
+    image: "/pic/rf151m-mixed-gas-recovery-separation-1.webp",
   },
   {
-    title: "Detection and Monitoring",
-    href: "/productcatalogue/finder?productrange=Detection%20and%20monitoring",
-    image: "https://www.sf6relations.com/wp-content/uploads/2022/09/PGAS32.png",
+    title: "H2 gas",
+    href: "/productcatalogue/finder?productrange=H2%20gas",
+    image: "/pic/hydrogen-sensor-instrumentation-and-equipment.webp",
   },
   {
-    title: "Valves and Couplings",
+    title: "Valves and couplings",
     href: "/productcatalogue/finder?productrange=Valves%20and%20couplings",
-    image:
-      "https://www.sf6relations.com/wp-content/uploads/2022/09/refilling-couplings-1-766x1024.jpg",
+    image: "/pic/sf6-gas-fittings.webp",
   },
 ];
 
 const productWorld = [
   {
-    title: "SF6 Gas Equipment",
-    body: "Service carts, filling devices, recovery systems, vacuum pump units, and regeneration equipment for switchgear gas handling.",
-    href: "/productcatalogue/finder?productrange=SF6%20gas",
-    image:
-      "https://www.sf6relations.com/wp-content/uploads/2023/02/SF6-Gas-Maintenance-Equipment-Manufacturer-2s.jpg",
+    title: "Gas refilling and evacuation devices",
+    body: "Vacuum pump units, filling carts, evacuation devices, and field equipment for commissioning and gas transfer work.",
+    href: "/productcatalogue/finder?productgroup=Gas%20refilling%20and%20evacuation%20devices",
+    image: "/pic/mobile-sf6-vacuum-pump-unit.webp",
   },
   {
-    title: "Hydrogen Detection and Analysis",
-    body: "Hydrogen sensors, leak detection instruments, purity analyzers, dew point monitoring, and online safety supervision products.",
-    href: "/productcatalogue/finder?productrange=Hydrogen",
-    image:
-      "https://www.sf6relations.com/wp-content/uploads/2024/03/hydrogen-leakage-monitoring-system-and-portable-hydrogen-leak-detector.webp",
+    title: "Measuring devices",
+    body: "Gas analyzers, leakage detection, density supervision, hydrogen sensors, and online monitoring instruments.",
+    href: "/productcatalogue/finder?productgroup=Measuring%20devices",
+    image: "/pic/sf6-gas-analyzer.webp",
   },
   {
-    title: "Valves and Couplings",
-    body: "Gas connections, refilling couplings, adapters, and supporting accessories for reliable SF6 and industrial gas operations.",
-    href: "/productcatalogue/finder?productrange=Valves%20and%20couplings",
-    image:
-      "https://www.sf6relations.com/wp-content/uploads/2022/09/refilling-couplings-1-766x1024.jpg",
+    title: "Service carts",
+    body: "Compact, medium, modular, and high-capacity gas handling carts for recovery, refilling, purification, and maintenance.",
+    href: "/productcatalogue/finder?productgroup=Service%20carts",
+    image: "/pic/rf391-mega-sf6-gas-handling.webp",
+  },
+  {
+    title: "Accessories",
+    body: "Couplings, fittings, hoses, adapters, and supporting connection parts for reliable field gas operations.",
+    href: "/productcatalogue/finder?productgroup=Accessories",
+    image: "/pic/sf6-gas-fittings.webp",
   },
 ];
 
@@ -139,21 +140,25 @@ export default function Home() {
 
       <section className="bg-white py-16 lg:py-20">
         <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
-          <div className="mx-auto max-w-4xl text-center">
+          <div className="flex flex-col gap-4 border-l-4 border-[#eb690b] pl-5 md:max-w-5xl">
             <p className="text-sm font-black uppercase tracking-[0.22em] text-[#eb690b]">Our product world</p>
-            <h2 className="mt-4 text-3xl font-black text-[#262f33] md:text-4xl">
-              Product categories built around your SF6 and hydrogen equipment portfolio
+            <h2 className="text-3xl font-black text-[#262f33] md:text-4xl">
+              Find equipment by the way customers work on gas systems
             </h2>
+            <p className="max-w-3xl text-base leading-8 text-[#495156]">
+              Four practical product families guide buyers from the first maintenance task to the correct equipment
+              type.
+            </p>
           </div>
 
-          <div className="mt-10 grid gap-5 lg:grid-cols-3">
+          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {productWorld.map((item) => (
               <Link
                 key={item.title}
                 href={item.href}
-                className="group overflow-hidden rounded-sm border border-[#d2d3d5] bg-[#f1f3f4] transition hover:-translate-y-1 hover:shadow-xl"
+                className="group flex min-h-full flex-col overflow-hidden rounded-sm border border-[#d2d3d5] bg-[#f1f3f4] transition hover:-translate-y-1 hover:border-[#eb690b] hover:shadow-xl"
               >
-                <div className="aspect-[1.15/1] overflow-hidden bg-white">
+                <div className="aspect-[1.2/1] overflow-hidden bg-white">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={item.image}
@@ -161,10 +166,12 @@ export default function Home() {
                     className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
                   />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-black text-[#262f33] group-hover:text-[#eb690b]">{item.title}</h3>
+                <div className="flex flex-1 flex-col p-5">
+                  <h3 className="text-xl font-black leading-tight text-[#262f33] group-hover:text-[#eb690b]">
+                    {item.title}
+                  </h3>
                   <p className="mt-4 text-sm leading-7 text-[#495156]">{item.body}</p>
-                  <span className="mt-6 inline-flex items-center gap-2 text-sm font-black uppercase tracking-wide text-[#262f33]">
+                  <span className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-black uppercase tracking-wide text-[#262f33]">
                     Explore category
                     <ArrowRight className="h-4 w-4 text-[#eb690b]" />
                   </span>
@@ -218,22 +225,33 @@ export default function Home() {
 
       <section id="product-areas" className="bg-white py-16 lg:py-20">
         <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
-          <h2 className="text-center text-3xl font-black text-[#262f33] md:text-4xl">Product areas</h2>
+          <div className="grid gap-4 md:grid-cols-[0.75fr_1fr] md:items-end">
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-[#eb690b]">Product areas</p>
+              <h2 className="mt-4 text-3xl font-black text-[#262f33] md:text-4xl">Gas application areas</h2>
+            </div>
+            <p className="max-w-2xl text-base leading-8 text-[#495156] md:justify-self-end">
+              Browse by gas type and connection scope: SF6, alternative insulation gases, hydrogen gas, and valves or
+              couplings.
+            </p>
+          </div>
 
           <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {productAreas.map((area) => (
               <Link
                 key={area.title}
                 href={area.href}
-                className="group rounded-sm border border-[#d2d3d5] bg-[#f1f3f4] p-6 transition hover:-translate-y-1 hover:shadow-xl"
+                className="group overflow-hidden rounded-sm border border-[#d2d3d5] bg-[#f1f3f4] transition hover:-translate-y-1 hover:border-[#eb690b] hover:shadow-xl"
               >
-                <div className="flex aspect-square items-center justify-center bg-white p-8">
+                <div className="flex aspect-[1.25/1] items-center justify-center bg-white p-5">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={area.image} alt={area.title} className="max-h-full max-w-full object-contain" />
                 </div>
-                <div className="mt-6 flex items-center justify-between gap-4">
-                  <h3 className="text-2xl font-black text-[#262f33] group-hover:text-[#eb690b]">{area.title}</h3>
-                  <ArrowRight className="h-6 w-6 text-[#eb690b]" />
+                <div className="flex min-h-[126px] items-center justify-between gap-4 border-t border-[#d2d3d5] bg-white p-5">
+                  <h3 className="break-words text-xl font-black leading-tight text-[#262f33] group-hover:text-[#eb690b]">
+                    {area.title}
+                  </h3>
+                  <ArrowRight className="h-6 w-6 shrink-0 text-[#eb690b]" />
                 </div>
               </Link>
             ))}
