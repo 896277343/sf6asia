@@ -151,14 +151,14 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-10 grid grid-cols-2 gap-3 md:gap-5 xl:grid-cols-4">
             {productWorld.map((item) => (
               <Link
                 key={item.title}
                 href={item.href}
                 className="group flex min-h-full flex-col overflow-hidden rounded-sm border border-[#d2d3d5] bg-[#f1f3f4] transition hover:-translate-y-1 hover:border-[#eb690b] hover:shadow-xl"
               >
-                <div className="aspect-[1.2/1] overflow-hidden bg-white">
+                <div className="aspect-[1.08/1] overflow-hidden bg-white sm:aspect-[1.2/1]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={item.image}
@@ -166,12 +166,12 @@ export default function Home() {
                     className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
                   />
                 </div>
-                <div className="flex flex-1 flex-col p-5">
-                  <h3 className="text-xl font-black leading-tight text-[#262f33] group-hover:text-[#eb690b]">
+                <div className="flex flex-1 flex-col p-3 sm:p-5">
+                  <h3 className="text-base font-black leading-tight text-[#262f33] group-hover:text-[#eb690b] sm:text-xl">
                     {item.title}
                   </h3>
-                  <p className="mt-4 text-sm leading-7 text-[#495156]">{item.body}</p>
-                  <span className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-black uppercase tracking-wide text-[#262f33]">
+                  <p className="mt-3 text-xs leading-6 text-[#495156] sm:mt-4 sm:text-sm sm:leading-7">{item.body}</p>
+                  <span className="mt-auto inline-flex items-center gap-2 pt-4 text-xs font-black uppercase tracking-wide text-[#262f33] sm:pt-6 sm:text-sm">
                     Explore category
                     <ArrowRight className="h-4 w-4 text-[#eb690b]" />
                   </span>

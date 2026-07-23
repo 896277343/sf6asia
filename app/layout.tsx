@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     "SF6 and hydrogen gas equipment catalogue for product search, technical review, favorites, and inquiry workflows.",
   metadataBase: new URL(siteConfig.site_domain),
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
   },
   alternates: {
     canonical: "/",
