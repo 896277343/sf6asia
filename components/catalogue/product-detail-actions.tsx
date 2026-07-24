@@ -1,19 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Download, Mail, ShoppingBag } from "lucide-react";
+import Link from "next/link";
+import { ArrowLeft, Mail, ShoppingBag } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type ProductDetailActionsProps = {
   article: string;
   name: string;
   slug: string;
-  sourceUrl: string;
 };
 
 const STORAGE_INQUIRY = "sf6relations:inquiry";
 
-export function ProductDetailActions({ article, name, slug, sourceUrl }: ProductDetailActionsProps) {
+export function ProductDetailActions({ article, name, slug }: ProductDetailActionsProps) {
   const [inquiry, setInquiry] = useState<string[]>([]);
 
   useEffect(() => {
@@ -41,15 +41,13 @@ export function ProductDetailActions({ article, name, slug, sourceUrl }: Product
         {inInquiry ? "In inquiry list" : "Add to inquiry"}
       </button>
 
-      <a
-        href={sourceUrl}
-        target="_blank"
-        rel="noreferrer"
+      <Link
+        href="/productcatalogue/finder"
         className="inline-flex h-[52px] min-w-0 items-center justify-center gap-2 rounded-[4px] border border-[#bfc8ce] bg-white px-3 text-center text-sm font-black uppercase leading-tight tracking-wide text-[#20282d] transition hover:bg-[#eef2f4]"
       >
-        <Download className="h-5 w-5" />
-        Download data
-      </a>
+        <ArrowLeft className="h-5 w-5" />
+        Back to catalogue
+      </Link>
 
       <a
         href={`mailto:sales@sf6relations.com?subject=${encodeURIComponent(`Product inquiry ${article}`)}&body=${mailBody}`}

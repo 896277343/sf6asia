@@ -423,7 +423,6 @@ export default async function ProductPage({ params }: PageProps) {
                   article={product.article}
                   name={product.name}
                   slug={product.slug}
-                  sourceUrl={product.sourceUrl}
                 />
               </div>
 
