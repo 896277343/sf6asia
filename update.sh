@@ -4,11 +4,15 @@ set -euo pipefail
 APP_DIR="${APP_DIR:-/www/wwwroot/sf6asia}"
 BRANCH="${BRANCH:-main}"
 PM2_APP_NAME="${PM2_APP_NAME:-sf6asia}"
+SYSTEMD_SERVICE="${SYSTEMD_SERVICE:-}"
 USE_PNPM="${USE_PNPM:-0}"
+PORT="${PORT:-3008}"
+BIND_HOST="${BIND_HOST:-0.0.0.0}"
 
 echo "==> Updating SF6 Asia catalogue"
 echo "    App directory: ${APP_DIR}"
 echo "    Branch: ${BRANCH}"
+echo "    Port: ${PORT}"
 
 if [ ! -d "${APP_DIR}/.git" ]; then
   echo "ERROR: ${APP_DIR} is not a git project."
@@ -39,6 +43,9 @@ else
   npm install
 fi
 
+echo "==> Clearing Next.js build cache"
+rm -rf .next
+
 echo "==> Building production bundle"
 npm run build
 
@@ -50,10 +57,27 @@ if command -v pm2 >/dev/null 2>&1; then
     pm2 start server.js --name "${PM2_APP_NAME}" --update-env
   fi
   pm2 save
+elif [ -n "${SYSTEMD_SERVICE}" ] && command -v systemctl >/dev/null 2>&1; then
+  systemctl restart "${SYSTEMD_SERVICE}"
 else
-  echo "PM2 is not installed. Restart the Baota Node project manually."
-  echo "Baota start file: server.js"
-  echo "Start command: node server.js"
+  echo "PM2/systemd service not found. Restarting with nohup node server.js."
+  if command -v lsof >/dev/null 2>&1; then
+    PORT_PIDS="$(lsof -ti tcp:"${PORT}" || true)"
+    if [ -n "${PORT_PIDS}" ]; then
+      kill ${PORT_PIDS}
+      sleep 2
+    fi
+  elif command -v fuser >/dev/null 2>&1; then
+    fuser -k "${PORT}/tcp" || true
+    sleep 2
+  fi
+  PORT="${PORT}" BIND_HOST="${BIND_HOST}" nohup node server.js > server.log 2>&1 &
+  sleep 3
+fi
+
+echo "==> Checking local service"
+if command -v curl >/dev/null 2>&1; then
+  curl -fsS "http://127.0.0.1:${PORT}/" >/dev/null
 fi
 
 echo "==> Done"
