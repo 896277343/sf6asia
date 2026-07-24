@@ -306,6 +306,7 @@ function ProductCard({
   const specs = getKeySpecEntries(product, 5);
   const router = useRouter();
   const productHref = `/productcatalogue/article/${product.slug}`;
+  const rangeBadge = getRangeBadge(product.range);
 
   return (
     <article
@@ -327,11 +328,10 @@ function ProductCard({
             <img src={product.image} alt={product.name} className="h-full w-full object-contain" />
           </div>
           <div className="absolute left-4 top-4 flex max-w-[calc(100%-2rem)] flex-wrap gap-1.5">
-            <span className="rounded-[3px] bg-[#20282d] px-2 py-1 text-[10px] font-black uppercase text-white shadow-sm">
-              {product.range}
-            </span>
-            <span className="rounded-[3px] bg-[#eb690b] px-2 py-1 text-[10px] font-black uppercase text-white shadow-sm">
-              {product.article}
+            <span
+              className={`rounded-[3px] px-2 py-1 text-[10px] font-black uppercase text-white shadow-sm ${rangeBadge.className}`}
+            >
+              {rangeBadge.label}
             </span>
           </div>
         </div>
@@ -376,6 +376,24 @@ function ProductCard({
       </div>
     </article>
   );
+}
+
+function getRangeBadge(range: string) {
+  const normalized = range.toLowerCase();
+
+  if (normalized.includes("hydrogen") || normalized.includes("h2")) {
+    return { label: "H2", className: "bg-[#1f6fb2]" };
+  }
+
+  if (normalized.includes("sf6")) {
+    return { label: "SF6", className: "bg-[#eb690b]" };
+  }
+
+  if (normalized.includes("accessor") || normalized.includes("valves") || normalized.includes("couplings")) {
+    return { label: "Accessories", className: "bg-[#20282d]" };
+  }
+
+  return { label: range, className: "bg-[#20282d]" };
 }
 
 function SpecGrid({

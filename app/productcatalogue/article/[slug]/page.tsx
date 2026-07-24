@@ -320,6 +320,7 @@ export default async function ProductPage({ params }: PageProps) {
   const advantages = manualCopy?.advantages ?? product.highlights;
   const selectionGuide = manualCopy?.selectionGuide;
   const productImages = product.images?.length ? product.images : [product.image];
+  const rangeBadge = getRangeBadge(product.range);
 
   return (
     <main className="bg-white">
@@ -357,11 +358,10 @@ export default async function ProductPage({ params }: PageProps) {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={product.image} alt={product.name} className="h-full max-h-[560px] w-full object-contain" />
                 <div className="absolute left-4 top-4 flex flex-wrap gap-2">
-                  <span className="rounded-[3px] bg-[#20282d] px-3 py-1.5 text-xs font-black uppercase text-white">
-                    {product.range}
-                  </span>
-                  <span className="rounded-[3px] bg-[#eb690b] px-3 py-1.5 text-xs font-black uppercase text-white">
-                    {product.article}
+                  <span
+                    className={`rounded-[3px] px-3 py-1.5 text-xs font-black uppercase text-white ${rangeBadge.className}`}
+                  >
+                    {rangeBadge.label}
                   </span>
                 </div>
               </div>
@@ -545,6 +545,24 @@ function InfoCell({ label, value }: { label: string; value: string }) {
       <dd className="mt-1 break-words text-sm font-black leading-5 text-[#20282d]">{value}</dd>
     </div>
   );
+}
+
+function getRangeBadge(range: string) {
+  const normalized = range.toLowerCase();
+
+  if (normalized.includes("hydrogen") || normalized.includes("h2")) {
+    return { label: "H2", className: "bg-[#1f6fb2]" };
+  }
+
+  if (normalized.includes("sf6")) {
+    return { label: "SF6", className: "bg-[#eb690b]" };
+  }
+
+  if (normalized.includes("accessor") || normalized.includes("valves") || normalized.includes("couplings")) {
+    return { label: "Accessories", className: "bg-[#20282d]" };
+  }
+
+  return { label: range, className: "bg-[#20282d]" };
 }
 
 function SpecGrid({

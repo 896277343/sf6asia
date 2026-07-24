@@ -12,7 +12,7 @@ import { products } from "@/lib/catalogue-data";
 const productAreas = [
   {
     title: "SF6 gas",
-    href: "/productcatalogue/finder?productrange=SF6%20gas",
+    href: "/productcatalogue/finder?productrange=SF6",
     image: "/pic/sf6-service-carts.webp",
   },
   {
@@ -22,12 +22,12 @@ const productAreas = [
   },
   {
     title: "H2 gas",
-    href: "/productcatalogue/finder?productrange=H2%20gas",
+    href: "/productcatalogue/finder?productrange=Hydrogen",
     image: "/pic/hydrogen-sensor-instrumentation-and-equipment.webp",
   },
   {
     title: "Valves and couplings",
-    href: "/productcatalogue/finder?productrange=Valves%20and%20couplings",
+    href: "/productcatalogue/finder?productrange=Accessories",
     image: "/pic/sf6-gas-fittings.webp",
   },
 ];
@@ -36,25 +36,25 @@ const productWorld = [
   {
     title: "Gas refilling and evacuation devices",
     body: "Vacuum pump units, filling carts, evacuation devices, and field equipment for commissioning and gas transfer work.",
-    href: "/productcatalogue/finder?productgroup=Gas%20refilling%20and%20evacuation%20devices",
+    href: "/productcatalogue/finder?productgroup=SF6%20Service%20carts",
     image: "/pic/mobile-sf6-vacuum-pump-unit.webp",
   },
   {
     title: "Measuring devices",
     body: "Gas analyzers, leakage detection, density supervision, hydrogen sensors, and online monitoring instruments.",
-    href: "/productcatalogue/finder?productgroup=Measuring%20devices",
+    href: "/productcatalogue/finder?productgroup=H2%20Gas%20analyzers",
     image: "/pic/sf6-gas-analyzer.webp",
   },
   {
     title: "Service carts",
     body: "Compact, medium, modular, and high-capacity gas handling carts for recovery, refilling, purification, and maintenance.",
-    href: "/productcatalogue/finder?productgroup=Service%20carts",
+    href: "/productcatalogue/finder?productgroup=SF6%20Service%20carts",
     image: "/pic/rf391-mega-sf6-gas-handling.webp",
   },
   {
     title: "Accessories",
     body: "Couplings, fittings, hoses, adapters, and supporting connection parts for reliable field gas operations.",
-    href: "/productcatalogue/finder?productgroup=Accessories",
+    href: "/productcatalogue/finder?productgroup=coupling",
     image: "/pic/sf6-gas-fittings.webp",
   },
 ];
