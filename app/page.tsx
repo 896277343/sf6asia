@@ -12,22 +12,22 @@ import { products } from "@/lib/catalogue-data";
 const productAreas = [
   {
     title: "SF6 gas",
-    href: "/productcatalogue/finder?productrange=SF6",
+    href: "/productcatalogue/finder?gastype=SF6",
     image: "/pic/sf6-service-carts.webp",
   },
   {
     title: "Alternative arc quenching and insulating gases",
-    href: "/productcatalogue/finder?productrange=Alternative%20arc%20quenching%20and%20insulating%20gases",
+    href: "/productcatalogue/finder?gastype=Alternative%20arc%20quenching%20and%20insulating%20gases",
     image: "/pic/rf151m-mixed-gas-recovery-separation-1.webp",
   },
   {
     title: "H2 gas",
-    href: "/productcatalogue/finder?productrange=Hydrogen",
+    href: "/productcatalogue/finder?gastype=Hydrogen",
     image: "/pic/hydrogen-sensor-instrumentation-and-equipment.webp",
   },
   {
     title: "Valves and couplings",
-    href: "/productcatalogue/finder?productrange=Accessories",
+    href: "/productcatalogue/finder?gastype=Accessories",
     image: "/pic/sf6-gas-fittings.webp",
   },
 ];

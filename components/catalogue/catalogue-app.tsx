@@ -36,13 +36,19 @@ export function CatalogueApp({ compact = false }: CatalogueAppProps) {
   const [group, setGroup] = useState("All");
   const [favorites, setFavorites] = useState<string[]>([]);
   const [inquiry, setInquiry] = useState<string[]>([]);
+  const availableGroups = useMemo(() => {
+    const scopedProducts = range === "All" ? products : products.filter((product) => product.range === range);
+    const scopedGroups = [...new Set(scopedProducts.map((product) => product.group).filter(Boolean))];
+
+    return productGroups.filter((productGroup) => scopedGroups.includes(productGroup));
+  }, [range]);
 
   useEffect(() => {
     setFavorites(readStoredList(STORAGE_FAVORITES));
     setInquiry(readStoredList(STORAGE_INQUIRY));
 
     const params = new URLSearchParams(window.location.search);
-    const productRange = params.get("productrange");
+    const productRange = params.get("gastype") ?? params.get("productrange");
     const productGroup = params.get("productgroup");
 
     if (productRange && productRanges.includes(productRange)) {
@@ -53,6 +59,12 @@ export function CatalogueApp({ compact = false }: CatalogueAppProps) {
       setGroup(productGroup);
     }
   }, []);
+
+  useEffect(() => {
+    if (group !== "All" && !availableGroups.includes(group)) {
+      setGroup("All");
+    }
+  }, [availableGroups, group]);
 
   useEffect(() => {
     localStorage.setItem(STORAGE_FAVORITES, JSON.stringify(favorites));
@@ -183,8 +195,14 @@ export function CatalogueApp({ compact = false }: CatalogueAppProps) {
               <SlidersHorizontal className="h-5 w-5 text-[#eb690b]" />
               Filter
             </div>
-            <FilterSelect label="Product range" value={range} values={productRanges} onChange={setRange} />
-            <FilterSelect label="Product group" value={group} values={productGroups} onChange={setGroup} />
+            <FilterSelect label="Gas type" value={range} values={productRanges} onChange={setRange} />
+            <FilterSelect
+              label="Product group"
+              value={group}
+              values={availableGroups}
+              onChange={setGroup}
+              disabled={!availableGroups.length}
+            />
             <InquiryButton inquiryProducts={inquiryProducts} />
           </div>
         </div>
@@ -216,7 +234,7 @@ export function CatalogueApp({ compact = false }: CatalogueAppProps) {
           <div className="mt-6 border border-[#d8dde0] bg-[#f1f3f4] p-8 text-center">
             <h3 className="text-xl font-black text-[#20282d]">No matching product found</h3>
             <p className="mt-2 text-sm leading-6 text-[#4d565b]">
-              Try a broader product range or search by parameter such as recovery speed, evacuation speed, measuring
+              Try a broader gas type or search by parameter such as recovery speed, evacuation speed, measuring
               range, accuracy, or pressure.
             </p>
           </div>
@@ -244,11 +262,13 @@ function FilterSelect({
   value,
   values,
   onChange,
+  disabled = false,
 }: {
   label: string;
   value: string;
   values: string[];
   onChange: (value: string) => void;
+  disabled?: boolean;
 }) {
   return (
     <label className="block">
@@ -256,7 +276,8 @@ function FilterSelect({
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="h-12 w-full border border-[#bfc8ce] bg-white px-3 text-sm font-bold text-[#20282d] outline-none focus:border-[#eb690b]"
+        disabled={disabled}
+        className="h-12 w-full border border-[#bfc8ce] bg-white px-3 text-sm font-bold text-[#20282d] outline-none focus:border-[#eb690b] disabled:cursor-not-allowed disabled:bg-[#eef2f4] disabled:text-[#9aa5ab]"
       >
         <option>All</option>
         {values.map((item) => (
@@ -382,7 +403,7 @@ function getRangeBadge(range: string) {
   const normalized = range.toLowerCase();
 
   if (normalized.includes("hydrogen") || normalized.includes("h2")) {
-    return { label: "H2", className: "bg-[#1f6fb2]" };
+    return { label: "H2", className: "bg-[#38bdf8]" };
   }
 
   if (normalized.includes("sf6")) {

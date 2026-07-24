@@ -388,7 +388,7 @@ export default async function ProductPage({ params }: PageProps) {
               <p className="mt-5 max-w-3xl break-words text-lg leading-8 text-[#4d565b]">{product.summary}</p>
 
               <div className="mt-7 grid gap-3 border-y border-[#d8dde0] py-5 sm:grid-cols-3">
-                <InfoCell label="Product range" value={product.range} />
+                <InfoCell label="Gas type" value={product.range} />
                 <InfoCell label="Product group" value={product.group} />
                 <InfoCell label="Application" value={product.application} />
               </div>
@@ -551,7 +551,7 @@ function getRangeBadge(range: string) {
   const normalized = range.toLowerCase();
 
   if (normalized.includes("hydrogen") || normalized.includes("h2")) {
-    return { label: "H2", className: "bg-[#1f6fb2]" };
+    return { label: "H2", className: "bg-[#38bdf8]" };
   }
 
   if (normalized.includes("sf6")) {

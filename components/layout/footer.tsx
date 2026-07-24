@@ -21,43 +21,25 @@ export function Footer() {
             <p className="max-w-sm text-[#e4e8ec]">{siteConfig.site_description}</p>
           </div>
           <div className="flex flex-col gap-2 text-sm">
-            <h5 className="text-base font-black">Product groups</h5>
-            <Link className="text-[#e4e8ec] hover:text-white" href="/productcatalogue/finder?productgroup=Gas%20refilling%20and%20evacuating%20devices">
-              Gas refilling and evacuating devices
+            <h5 className="text-base font-black">Gas type</h5>
+            <Link className="text-[#e4e8ec] hover:text-white" href="/productcatalogue/finder?gastype=SF6">
+              SF6
             </Link>
-            <Link className="text-[#e4e8ec] hover:text-white" href="/productcatalogue/finder?productgroup=Measuring%20devices">
-              Measuring devices
+            <Link className="text-[#e4e8ec] hover:text-white" href="/productcatalogue/finder?gastype=Hydrogen">
+              Hydrogen
             </Link>
-            <Link className="text-[#e4e8ec] hover:text-white" href="/productcatalogue/finder?productgroup=Service%20carts">
-              Service carts
+            <Link
+              className="text-[#e4e8ec] hover:text-white"
+              href="/productcatalogue/finder?gastype=Alternative%20arc%20quenching%20and%20insulating%20gases"
+            >
+              Alternative gases
             </Link>
-            <Link className="text-[#e4e8ec] hover:text-white" href="/productcatalogue/finder?productgroup=Accessories">
+            <Link className="text-[#e4e8ec] hover:text-white" href="/productcatalogue/finder?gastype=Accessories">
               Accessories
-            </Link>
-            <Link className="text-[#e4e8ec] hover:text-white" href="/productcatalogue/finder?productgroup=Hydrogen%20analyzers">
-              Hydrogen analyzers
-            </Link>
-            <Link className="text-[#e4e8ec] hover:text-white" href="/productcatalogue/finder?productgroup=Hydrogen%20sensors">
-              Hydrogen sensors
-            </Link>
-            <Link className="text-[#e4e8ec] hover:text-white" href="/productcatalogue/finder?productgroup=Hydrogen%20leakage%20monitoring">
-              Hydrogen leakage monitoring
-            </Link>
-            <Link className="text-[#e4e8ec] hover:text-white" href="/productcatalogue/finder?productgroup=Hydrogen%20process%20control">
-              Hydrogen process control
-            </Link>
-            <Link className="text-[#e4e8ec] hover:text-white" href="/productcatalogue/finder?productgroup=Hydrogen%20drying">
-              Hydrogen drying
-            </Link>
-            <Link className="text-[#e4e8ec] hover:text-white" href="/productcatalogue/finder?productgroup=Hydrogen%20generation">
-              Hydrogen generation
-            </Link>
-            <Link className="text-[#e4e8ec] hover:text-white" href="/productcatalogue/finder?productgroup=Hydrogen%20energy%20storage">
-              Hydrogen energy storage
             </Link>
           </div>
           <div className="flex flex-col gap-2 text-sm">
-            <h5 className="text-base font-black">Product range</h5>
+            <h5 className="text-base font-black">Navigation</h5>
             {Object.entries(mainMenu).map(([key, href]) => (
               <Link
                 className="text-[#e4e8ec] hover:text-white"
