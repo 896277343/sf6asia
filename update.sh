@@ -4,6 +4,7 @@ set -euo pipefail
 APP_DIR="${APP_DIR:-/www/wwwroot/sf6asia}"
 BRANCH="${BRANCH:-main}"
 PM2_APP_NAME="${PM2_APP_NAME:-sf6asia}"
+USE_PNPM="${USE_PNPM:-0}"
 
 echo "==> Updating SF6 Asia catalogue"
 echo "    App directory: ${APP_DIR}"
@@ -24,12 +25,18 @@ git checkout "${BRANCH}"
 git pull --ff-only origin "${BRANCH}"
 
 echo "==> Installing dependencies"
-if command -v pnpm >/dev/null 2>&1; then
-  pnpm install --frozen-lockfile
+if [ "${USE_PNPM}" = "1" ] && [ -f "pnpm-lock.yaml" ]; then
+  if command -v pnpm >/dev/null 2>&1; then
+    pnpm install --frozen-lockfile
+  elif command -v corepack >/dev/null 2>&1; then
+    corepack enable
+    corepack pnpm install --frozen-lockfile
+  else
+    echo "pnpm/corepack not found. Falling back to npm install."
+    npm install
+  fi
 else
-  echo "pnpm not found. Trying corepack..."
-  corepack enable
-  corepack pnpm install --frozen-lockfile
+  npm install
 fi
 
 echo "==> Building production bundle"
