@@ -38,7 +38,7 @@ export const productGroups = [
   "SF6 Gas System",
 ];
 
-const h2Url = (slug: string) => `https://h2gassolution.com/products/${slug}`;
+const catalogueProductUrl = (slug: string) => `/productcatalogue/article/${slug}`;
 
 const h2GasSolutionProducts: Product[] = [
   {
@@ -50,8 +50,8 @@ const h2GasSolutionProducts: Product[] = [
     application: "Compact hydrogen sensing",
     summary:
       "Compact hydrogen concentration sensing for hydrogen leak monitoring, integrated equipment, and industrial hydrogen applications.",
-    image: "https://h2gassolution.com/products/tcm101-h2/tcm101-h2-1.jpg",
-    sourceUrl: h2Url("hydrogen-purity-sensor-tcm101-h2"),
+    image: "/pic/tcm101-h2-1.jpg",
+    sourceUrl: catalogueProductUrl("hydrogen-purity-sensor-tcm101-h2"),
     badges: ["Sensor", "Thermal conductivity", "Fast response"],
     highlights: [
       "No reference gas required for compact hydrogen measurement",
@@ -83,8 +83,8 @@ const h2GasSolutionProducts: Product[] = [
     application: "Embedded hydrogen detection",
     summary:
       "Compact hydrogen concentration detection for embedded equipment and flexible industrial integration.",
-    image: "https://h2gassolution.com/products/tcm200/tcm200-1.jpg",
-    sourceUrl: h2Url("micro-hydrogen-concentration-detector-tcm200"),
+    image: "/pic/tcm200-1.jpg",
+    sourceUrl: catalogueProductUrl("micro-hydrogen-concentration-detector-tcm200"),
     badges: ["Micro detector", "IP67", "Selectable output"],
     highlights: [
       "Compact detector module for embedded hydrogen equipment",
@@ -122,8 +122,8 @@ const h2GasSolutionProducts: Product[] = [
     application: "Industrial online sensing",
     summary:
       "Industrial online hydrogen concentration sensing for harsh environments and continuous process monitoring.",
-    image: "https://h2gassolution.com/products/pdm300/pdm300-1.jpg",
-    sourceUrl: h2Url("industrial-hydrogen-concentration-sensor-pdm300"),
+    image: "/pic/pdm300-1.jpg",
+    sourceUrl: catalogueProductUrl("industrial-hydrogen-concentration-sensor-pdm300"),
     badges: ["Industrial", "Pipeline", "Palladium alloy"],
     highlights: [
       "Pipeline type sensor for continuous hydrogen concentration monitoring",
@@ -158,8 +158,8 @@ const h2GasSolutionProducts: Product[] = [
     application: "Low-concentration hydrogen safety",
     summary:
       "Low-concentration hydrogen sensing for fuel cell systems, compact safety modules, and embedded equipment monitoring.",
-    image: "https://h2gassolution.com/products/fc-h2/fc-h2-1.jpg",
-    sourceUrl: h2Url("fuel-cell-hydrogen-sensor-fc-h2"),
+    image: "/pic/fc-h2-1.jpg",
+    sourceUrl: catalogueProductUrl("fuel-cell-hydrogen-sensor-fc-h2"),
     badges: ["Fuel cell", "ppm", "Low concentration"],
     highlights: [
       "Low ppm hydrogen sensing for fuel cell safety applications",
@@ -193,8 +193,8 @@ const h2GasSolutionProducts: Product[] = [
     application: "Portable leak inspection",
     summary:
       "Portable hydrogen leak detection with dual-sensor, dual-range measurement for maintenance inspection and industrial hydrogen safety applications.",
-    image: "https://h2gassolution.com/products/na-1/na-1-1.jpg",
-    sourceUrl: h2Url("portable-hydrogen-leak-detector-na-1"),
+    image: "/pic/na-1-1.jpg",
+    sourceUrl: catalogueProductUrl("portable-hydrogen-leak-detector-na-1"),
     badges: ["Portable", "Dual range", "Explosion-proof"],
     highlights: [
       "Dual-sensor detection with automatic range switching",
@@ -229,8 +229,8 @@ const h2GasSolutionProducts: Product[] = [
     application: "High-position leak inspection",
     summary:
       "Portable hydrogen detection and alarm support for elevated leak inspection, hard-to-reach hydrogen systems, and industrial safety applications.",
-    image: "https://h2gassolution.com/products/na-8/na-8-1.jpg",
-    sourceUrl: h2Url("portable-hydrogen-leak-detector-na-8"),
+    image: "/pic/na-8-1.jpg",
+    sourceUrl: catalogueProductUrl("portable-hydrogen-leak-detector-na-8"),
     badges: ["High-position", "6 m probe", "%LEL"],
     highlights: [
       "Telescopic probe supports elevated hydrogen leak inspection",
@@ -264,8 +264,8 @@ const h2GasSolutionProducts: Product[] = [
     application: "Fixed multi-point safety monitoring",
     summary:
       "Fixed hydrogen leak monitoring for continuous online safety coverage, multi-point monitoring, and alarm control support.",
-    image: "https://h2gassolution.com/products/na1000ms/na1000ms-1.jpg",
-    sourceUrl: h2Url("fixed-hydrogen-leak-monitoring-system-na1000ms"),
+    image: "/pic/na1000ms-1.jpg",
+    sourceUrl: catalogueProductUrl("fixed-hydrogen-leak-monitoring-system-na1000ms"),
     badges: ["Fixed", "1-16 channels", "Alarm records"],
     highlights: [
       "Centralized fixed hydrogen monitoring for generator and hydrogen operating points",
@@ -301,8 +301,8 @@ const h2GasSolutionProducts: Product[] = [
     application: "Cooling-water hydrogen leak monitoring",
     summary:
       "Online hydrogen leakage monitoring for generator cooling-water applications, leak-volume tracking, and hydrogen removal support.",
-    image: "https://h2gassolution.com/products/na1000ja/na1000ja-1.jpg",
-    sourceUrl: h2Url("online-hydrogen-leak-monitoring-system-na1000ja"),
+    image: "/pic/na1000ja-1.jpg",
+    sourceUrl: catalogueProductUrl("online-hydrogen-leak-monitoring-system-na1000ja"),
     badges: ["Online", "Leak volume", "RS-485"],
     highlights: [
       "Monitors hydrogen concentration, daily leak volume, and exhaust volume",
@@ -334,8 +334,8 @@ const h2GasSolutionProducts: Product[] = [
     application: "Portable hydrogen quality analysis",
     summary:
       "Portable hydrogen analysis for hydrogen purity, humidity, oxygen content, and gas replacement checks in field workflows.",
-    image: "https://h2gassolution.com/products/ra601h-ii/ra601h-ii-1.jpg",
-    sourceUrl: h2Url("portable-hydrogen-analyzer-ra601h-ii"),
+    image: "/pic/ra601h-ii-1.jpg",
+    sourceUrl: catalogueProductUrl("portable-hydrogen-analyzer-ra601h-ii"),
     badges: ["Portable", "Multi-parameter", "Battery"],
     highlights: [
       "Portable purity, humidity, and oxygen analysis for field workflows",
@@ -371,8 +371,8 @@ const h2GasSolutionProducts: Product[] = [
     application: "Generator hydrogen purity analysis",
     summary:
       "Online hydrogen purity analysis for generator hydrogen cooling systems and gas replacement monitoring in power plant applications.",
-    image: "https://h2gassolution.com/products/7866-7872d/7866-7872d-1.jpg",
-    sourceUrl: h2Url("hydrogen-purity-analyzer-7866-7872d"),
+    image: "/pic/7866-7872d-1.jpg",
+    sourceUrl: catalogueProductUrl("hydrogen-purity-analyzer-7866-7872d"),
     badges: ["Online", "Sampling system", "Explosion-proof"],
     highlights: [
       "Online hydrogen purity analyzer with sampling system",
@@ -403,8 +403,8 @@ const h2GasSolutionProducts: Product[] = [
     application: "Oxygen-in-hydrogen safety analysis",
     summary:
       "Real-time oxygen-in-hydrogen analysis for hydrogen-cooled generator systems and power industry safety monitoring.",
-    image: "https://h2gassolution.com/products/ra1630b/ra1630b-1.jpg",
-    sourceUrl: h2Url("oxygen-in-hydrogen-analyzer-ra1630b"),
+    image: "/pic/ra1630b-1.jpg",
+    sourceUrl: catalogueProductUrl("oxygen-in-hydrogen-analyzer-ra1630b"),
     badges: ["Oxygen", "Fixed", "4-20 mA"],
     highlights: [
       "Fixed oxygen-in-hydrogen analyzer for safety monitoring",
@@ -433,8 +433,8 @@ const h2GasSolutionProducts: Product[] = [
     application: "Online oxygen monitoring",
     summary:
       "Fixed online oxygen-in-hydrogen analysis for hydrogen quality monitoring and safer industrial hydrogen operation.",
-    image: "https://h2gassolution.com/products/ra1630/ra1630-1.jpg",
-    sourceUrl: h2Url("online-oxygen-in-hydrogen-analyzer-ra1630"),
+    image: "/pic/ra1630-1.jpg",
+    sourceUrl: catalogueProductUrl("online-oxygen-in-hydrogen-analyzer-ra1630"),
     badges: ["Online", "Oxygen", "Fixed analyzer"],
     highlights: [
       "Continuous oxygen-in-hydrogen analysis in fixed hydrogen systems",
@@ -462,8 +462,8 @@ const h2GasSolutionProducts: Product[] = [
     application: "Hydrogen moisture control",
     summary:
       "Fixed online dew point and moisture monitoring for hydrogen quality control and industrial gas process support.",
-    image: "https://h2gassolution.com/products/ra242j/ra242j-1.jpg",
-    sourceUrl: h2Url("online-precision-dew-point-meter-ra242j"),
+    image: "/pic/ra242j-1.jpg",
+    sourceUrl: catalogueProductUrl("online-precision-dew-point-meter-ra242j"),
     badges: ["Dew point", "Online", "Moisture"],
     highlights: [
       "Continuous dew point monitoring in hydrogen and process gas systems",
@@ -491,8 +491,8 @@ const h2GasSolutionProducts: Product[] = [
     application: "Fixed hydrogen purity analysis",
     summary:
       "Fixed hydrogen purity analysis for hydrogen-cooled generator units with sampling, temperature compensation, and long-term stable monitoring.",
-    image: "https://h2gassolution.com/products/rs-301on/rs-301on-1.jpg",
-    sourceUrl: h2Url("hydrogen-purity-analyzer-rs-301on"),
+    image: "/pic/rs-301on-1.jpg",
+    sourceUrl: catalogueProductUrl("hydrogen-purity-analyzer-rs-301on"),
     badges: ["Fixed", "Purity", "Generator"],
     highlights: [
       "Fixed analyzer for hydrogen-cooled generator purity monitoring",
@@ -524,8 +524,8 @@ const h2GasSolutionProducts: Product[] = [
     application: "Integrated hydrogen quality analysis",
     summary:
       "Integrated online hydrogen quality analysis for purity, humidity, oxygen content, and residual hydrogen monitoring in generator hydrogen systems.",
-    image: "https://h2gassolution.com/products/rs301on-iii/rs301on-iii-1.jpg",
-    sourceUrl: h2Url("hydrogen-quality-analyzer-rs301on-iii"),
+    image: "/pic/rs301on-iii-1.jpg",
+    sourceUrl: catalogueProductUrl("hydrogen-quality-analyzer-rs301on-iii"),
     badges: ["Integrated", "Purity", "Humidity + oxygen"],
     highlights: [
       "Integrated analysis of purity, humidity, oxygen, and residual hydrogen",
@@ -559,8 +559,8 @@ const h2GasSolutionProducts: Product[] = [
     application: "Online hydrogen purity monitoring",
     summary:
       "Fixed online hydrogen purity analysis for hydrogen quality monitoring and continuous industrial hydrogen process support.",
-    image: "https://h2gassolution.com/products/rs301on/rs301on-1.jpg",
-    sourceUrl: h2Url("online-hydrogen-purity-analyzer-rs301on"),
+    image: "/pic/rs301on-1.jpg",
+    sourceUrl: catalogueProductUrl("online-hydrogen-purity-analyzer-rs301on"),
     badges: ["Online", "Purity", "Fixed analyzer"],
     highlights: [
       "Continuous fixed hydrogen purity monitoring in industrial systems",
@@ -588,8 +588,8 @@ const h2GasSolutionProducts: Product[] = [
     application: "Generator hydrogen process control",
     summary:
       "Integrated process control for generator hydrogen replacement, hydrogen filling, replenishment, discharge, and online hydrogen parameter monitoring.",
-    image: "https://h2gassolution.com/products/jcqk/jcqk-1.jpg",
-    sourceUrl: h2Url("integrated-hydrogen-control-unit-jcqk"),
+    image: "/pic/jcqk-1.jpg",
+    sourceUrl: catalogueProductUrl("integrated-hydrogen-control-unit-jcqk"),
     badges: ["Process control", "Filling", "Monitoring"],
     highlights: [
       "Integrated hydrogen replacement, filling, replenishment, and discharge control",
@@ -616,8 +616,8 @@ const h2GasSolutionProducts: Product[] = [
     application: "Generator hydrogen drying",
     summary:
       "Third-generation hydrogen drying and humidity control for generator hydrogen systems, with purification support and three-tower adsorption design.",
-    image: "https://h2gassolution.com/products/rh-aqg-iii/rh-aqg-iii-1.jpg",
-    sourceUrl: h2Url("hydrogen-dryer-rh-aqg-iii"),
+    image: "/pic/rh-aqg-iii-1.jpg",
+    sourceUrl: catalogueProductUrl("hydrogen-dryer-rh-aqg-iii"),
     badges: ["Drying", "Dew point", "100 m3/h"],
     highlights: [
       "Hydrogen drying and humidity control for generator hydrogen systems",
@@ -650,8 +650,8 @@ const h2GasSolutionProducts: Product[] = [
     application: "Hydrogen replenishment and pressure maintenance",
     summary:
       "Automatic hydrogen generation and replenishment for generator hydrogen pressure maintenance, with purification and safety monitoring support.",
-    image: "https://h2gassolution.com/products/rlhj68-1/rlhj68-1-1.jpg",
-    sourceUrl: h2Url("hydrogen-purification-compensation-unit-rlhj68-1"),
+    image: "/pic/rlhj68-1-1.jpg",
+    sourceUrl: catalogueProductUrl("hydrogen-purification-compensation-unit-rlhj68-1"),
     badges: ["Purification", "Compensation", "99.99% purity"],
     highlights: [
       "Automatic hydrogen generation and compensation for pressure maintenance",
@@ -680,8 +680,8 @@ const h2GasSolutionProducts: Product[] = [
     application: "Generator hydrogen purification",
     summary:
       "Hydrogen purification for separating oxygen, nitrogen, and carbon dioxide impurities while improving hydrogen purity in generator hydrogen systems.",
-    image: "https://h2gassolution.com/products/rlhj68/rlhj68-1.jpg",
-    sourceUrl: h2Url("hydrogen-purification-unit-rlhj68"),
+    image: "/pic/rlhj68-1.jpg",
+    sourceUrl: catalogueProductUrl("hydrogen-purification-unit-rlhj68"),
     badges: ["Purification", "60 m3/h", "Generator"],
     highlights: [
       "Separates oxygen, nitrogen, and carbon dioxide impurities",
@@ -709,9 +709,8 @@ const h2GasSolutionProducts: Product[] = [
     application: "On-site hydrogen generation",
     summary:
       "Modular PEM hydrogen production for high-purity hydrogen output, fast renewable energy response, and scalable on-site clean hydrogen applications.",
-    image:
-      "https://h2gassolution.com/products/pem-water-electrolysis/pem-water-electrolysis-1.jpg",
-    sourceUrl: h2Url("pem-water-electrolysis-hydrogen-generation-system"),
+    image: "/pic/pem-water-electrolysis-1.jpg",
+    sourceUrl: catalogueProductUrl("pem-water-electrolysis-hydrogen-generation-system"),
     badges: ["PEM", "99.999%", "0.5-200 Nm3/h"],
     highlights: [
       "Modular PEM hydrogen generation for on-site clean hydrogen supply",
@@ -736,8 +735,8 @@ const h2GasSolutionProducts: Product[] = [
     application: "Hydrogen power and long-cycle energy storage",
     summary:
       "Integrated hydrogen production, storage, and fuel cell power generation for long-cycle clean energy storage and containerized renewable energy applications.",
-    image: "https://h2gassolution.com/products/h2pem-b/h2pem-b-1.jpg",
-    sourceUrl: h2Url("hydrogen-electric-coupled-energy-storage-system-h2pem-b"),
+    image: "/pic/h2pem-b-1.jpg",
+    sourceUrl: catalogueProductUrl("hydrogen-electric-coupled-energy-storage-system-h2pem-b"),
     badges: ["Energy storage", "Containerized", "Fuel cell"],
     highlights: [
       "Combines hydrogen production, storage, and fuel cell generation",
