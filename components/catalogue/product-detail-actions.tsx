@@ -21,7 +21,7 @@ export function ProductDetailActions({ article, name, slug, sourceUrl }: Product
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_INQUIRY, JSON.stringify(inquiry));
+    writeStoredList(STORAGE_INQUIRY, inquiry);
   }, [inquiry]);
 
   const inInquiry = inquiry.includes(slug);
@@ -63,11 +63,27 @@ export function ProductDetailActions({ article, name, slug, sourceUrl }: Product
 }
 
 function readStoredList(key: string) {
+  if (typeof window === "undefined") {
+    return [];
+  }
+
   try {
     const value = localStorage.getItem(key);
     return value ? (JSON.parse(value) as string[]) : [];
   } catch {
     return [];
+  }
+}
+
+function writeStoredList(key: string, value: string[]) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch {
+    // Some mobile browsers block localStorage in strict privacy modes.
   }
 }
 

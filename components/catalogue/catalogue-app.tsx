@@ -2,8 +2,6 @@
 
 import { useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import {
   ArrowRight,
   CheckCircle2,
@@ -68,11 +66,11 @@ export function CatalogueApp({ compact = false }: CatalogueAppProps) {
   }, [availableGroups, group]);
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_FAVORITES, JSON.stringify(favorites));
+    writeStoredList(STORAGE_FAVORITES, favorites);
   }, [favorites]);
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_INQUIRY, JSON.stringify(inquiry));
+    writeStoredList(STORAGE_INQUIRY, inquiry);
   }, [inquiry]);
 
   const filteredProducts = useMemo(() => {
@@ -258,6 +256,18 @@ function readStoredList(key: string) {
   }
 }
 
+function writeStoredList(key: string, value: string[]) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch {
+    // Some mobile browsers block localStorage in strict privacy modes.
+  }
+}
+
 function getGasTypeOrder(range: string) {
   const index = GAS_TYPE_ORDER.indexOf(range);
   return index === -1 ? GAS_TYPE_ORDER.length : index;
@@ -331,19 +341,21 @@ function ProductCard({
   onInquiry: () => void;
 }) {
   const specs = getKeySpecEntries(product, 5);
-  const router = useRouter();
   const productHref = `/productcatalogue/article/${product.slug}`;
   const rangeBadge = getRangeBadge(product.range);
+  const openProduct = () => {
+    window.location.assign(productHref);
+  };
 
   return (
     <article
       role="link"
       tabIndex={0}
-      onClick={() => router.push(productHref)}
+      onClick={openProduct}
       onKeyDown={(event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
-          router.push(productHref);
+          openProduct();
         }
       }}
       className="snap-start cursor-pointer overflow-hidden rounded-[6px] border border-[#d8dde0] bg-white shadow-[0_8px_22px_rgba(32,40,45,0.06)] transition hover:-translate-y-0.5 hover:border-[#eb690b] hover:shadow-[0_14px_30px_rgba(32,40,45,0.12)] focus:outline-none focus:ring-2 focus:ring-[#eb690b] focus:ring-offset-2 md:min-h-0 min-h-[calc(100svh-86px)]"
@@ -390,14 +402,14 @@ function ProductCard({
             <IconButton active={inInquiry} onClick={onInquiry} label="Inquiry">
               <ShoppingBag className="h-4 w-4" />
             </IconButton>
-            <Link
+            <a
               href={productHref}
               onClick={(event) => event.stopPropagation()}
               className="inline-flex h-10 items-center justify-center gap-2 rounded-[4px] bg-[#20282d] px-4 text-sm font-black text-white transition hover:bg-[#4d565b]"
             >
               Details
               <ArrowRight className="h-4 w-4" />
-            </Link>
+            </a>
           </div>
         </div>
       </div>

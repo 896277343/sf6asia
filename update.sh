@@ -5,7 +5,7 @@ APP_DIR="${APP_DIR:-/www/wwwroot/sf6asia}"
 BRANCH="${BRANCH:-main}"
 PM2_APP_NAME="${PM2_APP_NAME:-sf6asia}"
 SYSTEMD_SERVICE="${SYSTEMD_SERVICE:-}"
-USE_PNPM="${USE_PNPM:-0}"
+USE_NPM="${USE_NPM:-0}"
 PORT="${PORT:-3008}"
 BIND_HOST="${BIND_HOST:-0.0.0.0}"
 
@@ -29,17 +29,13 @@ git checkout "${BRANCH}"
 git pull --ff-only origin "${BRANCH}"
 
 echo "==> Installing dependencies"
-if [ "${USE_PNPM}" = "1" ] && [ -f "pnpm-lock.yaml" ]; then
-  if command -v pnpm >/dev/null 2>&1; then
-    pnpm install --frozen-lockfile
-  elif command -v corepack >/dev/null 2>&1; then
-    corepack enable
-    corepack pnpm install --frozen-lockfile
-  else
-    echo "pnpm/corepack not found. Falling back to npm install."
-    npm install
-  fi
+if [ "${USE_NPM}" = "1" ]; then
+  npm install
+elif [ -f "pnpm-lock.yaml" ]; then
+  npm install -g pnpm@9.15.9
+  pnpm install --frozen-lockfile
 else
+  echo "pnpm-lock.yaml not found. Falling back to npm install."
   npm install
 fi
 
@@ -47,7 +43,11 @@ echo "==> Clearing Next.js build cache"
 rm -rf .next
 
 echo "==> Building production bundle"
-npm run build
+if [ "${USE_NPM}" = "1" ] || [ ! -f "pnpm-lock.yaml" ]; then
+  npm run build
+else
+  pnpm run build
+fi
 
 echo "==> Restarting service"
 if command -v pm2 >/dev/null 2>&1; then
