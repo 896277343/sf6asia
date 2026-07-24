@@ -28,6 +28,7 @@ type CatalogueAppProps = {
 
 const STORAGE_FAVORITES = "sf6relations:favorites";
 const STORAGE_INQUIRY = "sf6relations:inquiry";
+const GAS_TYPE_ORDER = ["SF6", "Alternative arc quenching and insulating gases", "Accessories", "Hydrogen"];
 
 export function CatalogueApp({ compact = false }: CatalogueAppProps) {
   const [query, setQuery] = useState("");
@@ -101,7 +102,7 @@ export function CatalogueApp({ compact = false }: CatalogueAppProps) {
         (range === "All" || product.range === range) &&
         (group === "All" || product.group === group)
       );
-    });
+    }).sort((a, b) => getGasTypeOrder(a.range) - getGasTypeOrder(b.range));
   }, [group, range, submittedQuery]);
 
   function resetFilters() {
@@ -255,6 +256,11 @@ function readStoredList(key: string) {
   } catch {
     return [];
   }
+}
+
+function getGasTypeOrder(range: string) {
+  const index = GAS_TYPE_ORDER.indexOf(range);
+  return index === -1 ? GAS_TYPE_ORDER.length : index;
 }
 
 function FilterSelect({

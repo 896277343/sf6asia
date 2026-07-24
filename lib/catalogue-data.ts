@@ -15,10 +15,10 @@ export type Product = {
 };
 
 export const productRanges = [
-  "Hydrogen",
   "SF6",
   "Alternative arc quenching and insulating gases",
   "Accessories",
+  "Hydrogen",
 ];
 
 export const productGroups = [
